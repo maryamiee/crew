@@ -23,7 +23,7 @@ class AdminProfileScreen extends StatelessWidget {
                   child: Icon(Icons.person_rounded, size: 40, color: AppColors.adminPrimary),
                 ),
                 const SizedBox(height: AppSpacing.md),
-                Text('Dr. Farah Siddiqui', style: Theme.of(context).textTheme.titleLarge),
+                Text('Maryam Khan', style: Theme.of(context).textTheme.titleLarge),
                 const Text('Campus Safety Administrator',
                     style: TextStyle(color: AppColors.textSecondary, fontSize: 13)),
               ],
@@ -33,7 +33,7 @@ class AdminProfileScreen extends StatelessWidget {
           Card(
             child: Column(
               children: [
-                _ProfileTile(icon: Icons.mail_outline_rounded, label: 'Email', value: 'farah.siddiqui@university.edu'),
+                _ProfileTile(icon: Icons.mail_outline_rounded, label: 'Email', value: 'maryamkhan@university.edu'),
                 const Divider(height: 1),
                 _ProfileTile(icon: Icons.badge_outlined, label: 'Admin ID', value: 'ADM-0042'),
                 const Divider(height: 1),
