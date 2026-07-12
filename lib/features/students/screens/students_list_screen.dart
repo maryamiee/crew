@@ -6,15 +6,35 @@ class StudentEntry {
   final String name;
   final String id;
   final String department;
-  const StudentEntry({required this.name, required this.id, required this.department});
+  const StudentEntry({
+    required this.name,
+    required this.id,
+    required this.department,
+  });
 
   static List<StudentEntry> demoList() => const [
-        StudentEntry(name: 'Ahmed Raza', id: 'STD-2201', department: 'Computer Science'),
-        StudentEntry(name: 'Sana Malik', id: 'STD-2078', department: 'Business Administration'),
-        StudentEntry(name: 'Bilal Khan', id: 'STD-1994', department: 'Electrical Engineering'),
-        StudentEntry(name: 'Hina Farooq', id: 'STD-2150', department: 'Psychology'),
-        StudentEntry(name: 'Usman Tariq', id: 'STD-2033', department: 'Computer Science'),
-      ];
+    StudentEntry(
+      name: 'Ahmed Raza',
+      id: 'STD-2201',
+      department: 'Computer Science',
+    ),
+    StudentEntry(
+      name: 'Sana Malik',
+      id: 'STD-2078',
+      department: 'Business Administration',
+    ),
+    StudentEntry(
+      name: 'Bilal Khan',
+      id: 'STD-1994',
+      department: 'Electrical Engineering',
+    ),
+    StudentEntry(name: 'Hina Farooq', id: 'STD-2150', department: 'Psychology'),
+    StudentEntry(
+      name: 'Usman Tariq',
+      id: 'STD-2033',
+      department: 'Computer Science',
+    ),
+  ];
 }
 
 class StudentsListScreen extends StatefulWidget {
@@ -31,8 +51,11 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
   Widget build(BuildContext context) {
     final all = StudentEntry.demoList();
     final filtered = all
-        .where((s) => s.name.toLowerCase().contains(_query.toLowerCase()) ||
-            s.id.toLowerCase().contains(_query.toLowerCase()))
+        .where(
+          (s) =>
+              s.name.toLowerCase().contains(_query.toLowerCase()) ||
+              s.id.toLowerCase().contains(_query.toLowerCase()),
+        )
         .toList();
 
     return Scaffold(
@@ -54,19 +77,37 @@ class _StudentsListScreenState extends State<StudentsListScreen> {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
               itemCount: filtered.length,
-              separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.sm),
+              separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.sm),
               itemBuilder: (context, i) {
                 final s = filtered[i];
                 return Card(
                   child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.xs,
+                    ),
                     leading: CircleAvatar(
                       backgroundColor: AppColors.adminPrimaryLight,
-                      child: Text(s.name[0], style: const TextStyle(color: AppColors.adminPrimary, fontWeight: FontWeight.w600)),
+                      child: Text(
+                        s.name[0],
+                        style: const TextStyle(
+                          color: AppColors.adminPrimary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                    title: Text(s.name, style: const TextStyle(fontWeight: FontWeight.w600)),
-                    subtitle: Text('${s.id} · ${s.department}', style: const TextStyle(fontSize: 12)),
-                    trailing: const Icon(Icons.chevron_right_rounded, color: AppColors.textSecondary),
+                    title: Text(
+                      s.name,
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    subtitle: Text(
+                      '${s.id} · ${s.department}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                    trailing: const Icon(
+                      Icons.chevron_right_rounded,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 );
               },
