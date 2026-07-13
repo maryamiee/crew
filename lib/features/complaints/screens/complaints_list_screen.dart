@@ -33,16 +33,22 @@ class _ComplaintsListScreenState extends State<ComplaintsListScreen> {
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
               children: [
-                _FilterChip(label: 'All', selected: _filter == null, onTap: () => setState(() => _filter = null)),
-                ...ReportStatus.values.map((s) => Padding(
-                      padding: const EdgeInsets.only(left: AppSpacing.sm),
-                      child: _FilterChip(
-                        label: s.label,
-                        selected: _filter == s,
-                        color: s.color,
-                        onTap: () => setState(() => _filter = s),
-                      ),
-                    )),
+                _FilterChip(
+                  label: 'All',
+                  selected: _filter == null,
+                  onTap: () => setState(() => _filter = null),
+                ),
+                ...ReportStatus.values.map(
+                  (s) => Padding(
+                    padding: const EdgeInsets.only(left: AppSpacing.sm),
+                    child: _FilterChip(
+                      label: s.label,
+                      selected: _filter == s,
+                      color: s.color,
+                      onTap: () => setState(() => _filter = s),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -50,12 +56,16 @@ class _ComplaintsListScreenState extends State<ComplaintsListScreen> {
           Expanded(
             child: filtered.isEmpty
                 ? const Center(
-                    child: Text('No complaints in this category',
-                        style: TextStyle(color: AppColors.textSecondary)))
+                    child: Text(
+                      'No complaints in this category',
+                      style: TextStyle(color: AppColors.textSecondary),
+                    ),
+                  )
                 : ListView.separated(
                     padding: const EdgeInsets.all(AppSpacing.md),
                     itemCount: filtered.length,
-                    separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.sm),
+                    separatorBuilder: (_, _) =>
+                        const SizedBox(height: AppSpacing.sm),
                     itemBuilder: (context, i) {
                       final c = filtered[i];
                       return Card(
@@ -68,32 +78,53 @@ class _ComplaintsListScreenState extends State<ComplaintsListScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(c.id,
-                                        style: const TextStyle(
-                                            color: AppColors.textSecondary, fontSize: 12)),
+                                    Text(
+                                      c.id,
+                                      style: const TextStyle(
+                                        color: AppColors.textSecondary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
                                     StatusChip(status: c.status),
                                   ],
                                 ),
                                 const SizedBox(height: AppSpacing.xs),
-                                Text(c.category,
-                                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+                                Text(
+                                  c.category,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15,
+                                  ),
+                                ),
                                 const SizedBox(height: 4),
                                 Text(
                                   c.description,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                                  style: const TextStyle(
+                                    color: AppColors.textSecondary,
+                                    fontSize: 13,
+                                  ),
                                 ),
                                 const SizedBox(height: AppSpacing.sm),
                                 Row(
                                   children: [
-                                    const Icon(Icons.person_outline_rounded,
-                                        size: 14, color: AppColors.textSecondary),
+                                    const Icon(
+                                      Icons.person_outline_rounded,
+                                      size: 14,
+                                      color: AppColors.textSecondary,
+                                    ),
                                     const SizedBox(width: 4),
-                                    Text(c.displayName,
-                                        style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+                                    Text(
+                                      c.displayName,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: AppColors.textSecondary,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -130,7 +161,10 @@ class _FilterChip extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: AppDuration.fast,
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.sm,
+        ),
         decoration: BoxDecoration(
           color: selected ? chipColor : AppColors.surface,
           borderRadius: BorderRadius.circular(AppRadius.pill),

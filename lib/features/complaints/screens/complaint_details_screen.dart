@@ -32,13 +32,21 @@ class ComplaintDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(complaint.category, style: Theme.of(context).textTheme.titleLarge),
+                      Text(
+                        complaint.category,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                       StatusChip(status: complaint.status),
                     ],
                   ),
                   const SizedBox(height: AppSpacing.sm),
-                  Text(complaint.description,
-                      style: const TextStyle(color: AppColors.textPrimary, height: 1.5)),
+                  Text(
+                    complaint.description,
+                    style: const TextStyle(
+                      color: AppColors.textPrimary,
+                      height: 1.5,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -57,7 +65,9 @@ class ComplaintDetailsScreen extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: AppColors.adminPrimaryLight,
                     child: Icon(
-                      complaint.isAnonymous ? Icons.visibility_off_rounded : Icons.person_rounded,
+                      complaint.isAnonymous
+                          ? Icons.visibility_off_rounded
+                          : Icons.person_rounded,
                       color: AppColors.adminPrimary,
                     ),
                   ),
@@ -66,12 +76,18 @@ class ComplaintDetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(complaint.displayName, style: const TextStyle(fontWeight: FontWeight.w600)),
+                        Text(
+                          complaint.displayName,
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
                         Text(
                           complaint.isAnonymous
                               ? 'Identity protected by anonymous reporting'
                               : 'Submitted ${_timeAgo(complaint.submittedAt)}',
-                          style: const TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: AppColors.textSecondary,
+                          ),
                         ),
                       ],
                     ),
@@ -90,7 +106,8 @@ class ComplaintDetailsScreen extends StatelessWidget {
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemCount: complaint.evidenceUrls.length,
-                separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.sm),
+                separatorBuilder: (_, _) =>
+                    const SizedBox(width: AppSpacing.sm),
                 itemBuilder: (context, i) => Container(
                   width: 90,
                   decoration: BoxDecoration(
@@ -98,7 +115,11 @@ class ComplaintDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(AppRadius.sm),
                   ),
                   alignment: Alignment.center,
-                  child: const Icon(Icons.image_outlined, color: AppColors.textSecondary, size: 28),
+                  child: const Icon(
+                    Icons.image_outlined,
+                    color: AppColors.textSecondary,
+                    size: 28,
+                  ),
                 ),
               ),
             ),
@@ -106,7 +127,10 @@ class ComplaintDetailsScreen extends StatelessWidget {
           ],
 
           if (complaint.adminRemarks != null) ...[
-            Text('Admin Remarks', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'Admin Remarks',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: AppSpacing.sm),
             Card(
               child: Padding(
