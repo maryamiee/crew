@@ -13,28 +13,12 @@ class StudentEntry {
   });
 
   static List<StudentEntry> demoList() => const [
-    StudentEntry(
-      name: 'Ahmed Raza',
-      id: 'STD-2201',
-      department: 'Computer Science',
-    ),
-    StudentEntry(
-      name: 'Sana Malik',
-      id: 'STD-2078',
-      department: 'Business Administration',
-    ),
-    StudentEntry(
-      name: 'Bilal Khan',
-      id: 'STD-1994',
-      department: 'Electrical Engineering',
-    ),
-    StudentEntry(name: 'Hina Farooq', id: 'STD-2150', department: 'Psychology'),
-    StudentEntry(
-      name: 'Usman Tariq',
-      id: 'STD-2033',
-      department: 'Computer Science',
-    ),
-  ];
+        StudentEntry(name: 'Ahmed Raza', id: 'SP24-BSE-011', department: 'Computer Science'),
+        StudentEntry(name: 'Sana Malik', id: 'SP22-BBA-001', department: 'Business Administration'),
+        StudentEntry(name: 'Bilal Khan', id: 'SP23-BEE-001', department: 'Electrical Engineering'),
+        StudentEntry(name: 'Hina Farooq', id: 'SP22-PSY-045', department: 'Psychology'),
+        StudentEntry(name: 'Usman Tariq', id: 'SP24-BCS-0', department: 'Computer Science'),
+      ];
 }
 
 class StudentsListScreen extends StatefulWidget {
